@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Home {% endblock %}
+
+{% block content %}
+    
+<img class="imageCategory w-sm-100 d-sm-none" src="{{product.image.url}}" alt="">  
+        <div class="container mb-5">
+            <h1 class="text-light">Mebel:</h1>
+            <hr class="bg-dark-light">
+            <div class="grid-2 grid-sm-1 gap-2 mt-5">
+                <div><img class=" w-100 " src="{{product.image.url}}" alt=""></div>
+                <div class="p-2">
+                  <p class="fs-30 text-light mb-0 mt-3">Type : <span class="text-red">{{product.title}}</span></p>
+                  <p class="fs-22 text-light mb-0 mt-3">{{product.body}} </p>
+                  <p class="fs-22 text-light mb-0 mt-3">Price : <span class="text-red">{{product.price}}</span></p>
+                  <p class="fs-22 text-light mb-0 mt-3">Size : <span class="text-red">{{product.size}}</span></p>
+                  <p class="fs-22 text-light mb-0 mt-3">Materials : <span class="text-red">{{product.materials}}</span></p>
+                  
+                  <button class="btn btn-red rounded-1 btnHover  mt-2 w-35 mt-5">about</button>
+                  </div>  
+              </div>
+        </div>
+            
+            
+        
+       
+    
+    
+ 
+ 
+ 
+ 
+ 
+ {% endblock %}

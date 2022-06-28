@@ -1,0 +1,336 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Home {% endblock %}
+
+{% block content %}
+  
+<div class="grid-4 grid-sm-2">
+   
+   {% for category in categories %}
+   <a class="postOfAllfilms" href="{% url 'category_detail' category.id %}">      
+      <img class="imgOfAllfilms" src="{{category.icon.url}}" alt="">
+      <div class="main">
+        <div class="titleOfAllfilms">
+          <p class="">{{category.title}}</p>
+        </div>  
+        <button class="btn_ btn btn-red rounded-1">About more</button> 
+      </div>          
+</a>
+   {% endfor %}
+  
+    
+
+ 
+  
+</div>
+
+<div class="container mt-5 d-flex flex-sm-wrap justify-content-between ">
+ <div class="slide w-65 w-sm-100 ">
+   <div class="d-flex align-items-center justify-content-between">
+     <div class=""><p class="fs-27 b-2 text-light mb-0">SUPER FAVORABLE <span class="text-red">OFFERS</span></p></div>
+     
+   </div>
+   <hr class="bg-dark-light">
+   
+  <div class="">
+    <div class=" bg-dark-ocean rounded-1 mt-4  ">
+      <div id="image-slider2" class="splide   pb-5">
+         <div class="splide__track h-100 w-100  ">
+            <ul class="splide__list h-100 ">
+              {% for product in products %}
+    
+               <li class="splide__slide h-100" >
+                <div class="cart grid-2 gap-1">
+                  <img class="imgSlide w-100 object-fit" src="{{product.image.url}}" alt="">
+                    <div class="p-2">
+                      <p class="hoverText fs-22 b-1 text-light mb-0 mt-1">Lorem, "ipsum".</p>
+                      <p class="fs-20 text-red">{{product.title}}</p>
+                      <p class="text-light">{{product.body}} </p>
+                      <p class="text-light">{{product.price}}$</p>
+                      
+                      <a href="{% url 'product_detail' product.id %}">
+                      <button class="btn btn-red rounded-1 btnHover  mt-2 w-35">about</button>
+                      </a>
+                    </div>  
+                 </div>
+                
+                </li>
+                {% endfor %}
+    
+            </ul>
+         </div>
+      </div>
+     
+      
+       
+    
+     </div>
+    
+    </div>
+   </div>
+  
+   <div class=" w-30 w-sm-100 ">
+     <p class="fs-27 b-2 text-light mb-0 ">IN STOCK:</p>
+     <hr class="bg-dark-light">
+    <div class="scrol">
+    {% for product in products %}
+     <div class="d-flex align-items-center  ">
+       <img class="imgmini" src="{{product.image.url}}" alt="">
+       <div class="ml-3">
+         <p class="hoverText_ fs-15 b-1 text-light ">
+          {% if product.title|length > 20 %}
+              {{ product.title|slice:':12' }}...
+          {% else %}
+              {{product.title}}
+          {% endif %}
+         </p>
+         <p class="fs-15 text-red">
+          {% if product.body|length > 20 %}
+              {{ product.body|slice:':12' }}...
+          {% else %}
+              {{product.body}}
+          {% endif %}
+         </p>
+         <p class="fs-13 text-grey">{{product.price}}$</p>
+       </div>
+       <a href="{% url 'product_detail' product.id %} " class="ml-auto"> 
+          <button class="btn btn-outline-red rounded-3 " >go</button>
+       </a>
+     </div>
+    {% endfor %}
+     
+    
+    
+    </div>
+     
+   </div>
+  </div>
+
+
+
+
+
+<div class="container my-5">
+ <div class="d-flex justify-content-between align-items-center">
+   <div><p class="fs-30 b-1 mb-0 text-light mt-5">Famous</p></div>
+   
+ </div>
+ <hr class="bg-dark-light">
+ <div class=" bg-dark-ocean rounded-1 mt-4 ">
+  <div id="image-slider1" class="splide min-vh-50  pb-5">
+     <div class="splide__track h-100 w-100 ">
+        <ul class="splide__list h-100 ">
+          {% for product in products %}
+
+           <li class="splide__slide h-100 p-3" >
+            <div class="cart bg-light rounded-1">
+              <img class="imgSlide w-100 rounded-top-left-1 rounded-top-right-1" src="{{product.image.url}}" alt="">
+                <div class="p-2">
+                  <p class="hoverText fs-22 b-1 text-night mb-0 mt-0">Lorem, "ipsum".</p>
+                <p class="fs-15 text-night mb-0 mt-1">{{product.title}}</p>
+                <p class="fs-15 text-night mb-0 mt-1">
+                  {% if product.body|length > 20 %}
+                      {{ product.body|slice:':12' }}...
+                  {% else %}
+                      {{product.body}}
+                  {% endif %}  
+                </p>
+                <p class="fs-15 text-night mb-0 mt-1">{{product.price}}$</p>
+                
+                <a href="{% url 'product_detail' product.id %}">
+                 <button class="btn btn-red rounded-1 btnHover btn-sm mt-2 w-35">about</button>
+                </a>
+                </div>  
+             </div>
+            
+            </li>
+            {% endfor %}
+
+        </ul>
+     </div>
+  </div>
+ 
+  
+   
+
+ </div>
+
+</div>
+
+
+
+<div class="fabric d-sm-none">
+ <img class="imgBackground " src="https://previews.123rf.com/images/picsguru/picsguru2006/picsguru200600042/150240256-furniture-manufacturing-process-in-a-warehouse.jpg" alt="">
+ <div class="fabricTitle container">
+   <p class=" fs-38 fs-sm-20  b-1 text-center text-light ">How does our production work?</p>
+   <div class="grid-4  gap-2">
+     <div class="d-sm-flex align-items-center justify-content-between ">
+       <img class="imgAbout w-sm-35" src="https://smebel.uz/themes/s/assets/img/how/how_1.png" alt="">
+       <div class="w-sm-65">
+         <p class="fs-18 fs-sm-15 text-light">YOUR CALL OR REQUEST</p>
+         <p class="fs-15 fs-sm-12 text-light">Discussion and preliminary calculation of the order or sent sketch</p>
+       </div>
+     </div>
+     <div class="d-sm-flex align-items-center justify-content-between ">
+       <img class="imgAbout w-sm-35" src="https://smebel.uz/themes/s/assets/img/how/how_2.png" alt="">
+       <div class="w-sm-65">
+         <p class="fs-18 fs-sm-15 text-light">FREE DESIGNER DEPARTURE</p>
+         <p class="fs-15 fs-sm-12 text-light">Discussion and preliminary calculation of the order or sent sketch </p>
+       </div>
+     </div>
+     <div class="d-sm-flex align-items-center justify-content-between ">
+       <img class="imgAbout w-sm-35" src="https://smebel.uz/themes/s/assets/img/how/how_3.png" alt="">
+       <div class="w-sm-65">
+         <p class="fs-18 fs-sm-15 text-light">CONTRACT SIGNING</p>
+         <p class="fs-15 fs-sm-12 text-light">Creating a sketch, discussing the subtleties, choosing materials and colors, measuring the room, calculating the cost</p>
+       </div>
+     </div>
+     <div class="d-sm-flex align-items-center justify-content-between ">
+       <img class="imgAbout w-sm-35" src="https://smebel.uz/themes/s/assets/img/how/how_3.png" alt="">
+       <div class="w-sm-65">
+         <p class="fs-18 fs-sm-15 text-light">MANUFACTURING, DELIVERY, INSTALLATION</p>
+         <p class="fs-15 fs-sm-12 text-light">After manufacturing, you choose a convenient delivery and installation time</p>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="container mb-5">
+ <p class="fs-38 fs-sm-22 b-1 text-center text-light">Why is our furniture cheaper?</p>
+ <div class="grid-2 gap-2 grid-sm-1">
+   <div class="d-flex align-items-center justify-content-between">
+       <img class="cheapFurniture" src="https://smebel.uz/themes/s/assets/img/why/why_1.png" alt="">
+       <div class="mx-4">
+         <p class="fs-18 fs-sm-15 text-light">OWN PRODUCTION</p>
+         <p class="fs-15 fs-sm-12 text-light">In our production, we manufacture furniture of almost any complexity and almost any size according to your order.</p>
+       </div>
+   </div>
+   <div class="d-flex align-items-center justify-content-between">
+       <img class="cheapFurniture" src="https://smebel.uz/themes/s/assets/img/why/why_2.png" alt="">
+        <div class="mx-4">
+         <p class="fs-18 fs-sm-15 text-light">NO INTERMEDIARY MARK</p>
+         <p class="fs-15 fs-sm-12 text-light">We do not work with intermediaries! All furniture that you order from start to finish is made by us independently</p>
+        </div>
+   </div>
+   <div class="d-flex align-items-center justify-content-between">
+       <img class="cheapFurniture" src="	https://smebel.uz/themes/s/assets/img/why/why_3.png" alt="">
+       <div class="mx-4">
+         <p class="fs-18 fs-sm-15 text-light">FREE SHIPPING AND COLLECTION</p>
+         <p class="fs-15 fs-sm-12 text-light">When ordering furniture from us, you are guaranteed to receive free delivery and assembly</p>
+        </div>
+   </div>
+   <div class="d-flex align-items-center justify-content-between">
+       <img class="cheapFurniture" src="	https://smebel.uz/themes/s/assets/img/why/why_4.png" alt="">
+       <div class="mx-4">
+         <p class="fs-18 fs-sm-15 text-light">FASTEST PRODUCTION TIME</p>
+         <p class="fs-15 fs-sm-12 text-light">Terms of production of furniture from 1 week!</p>
+        </div>
+   </div>
+ </div>
+</div>
+
+
+
+<div class="application">
+ <div class="backGround w-100">
+   <div class="mx-auto w-50 mb-5  d-flex align-items-center">
+     <div>
+       <p class="fs-16 fs-sm-10 text-light text-center mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque ea porro perferendis. Voluptatum sit facilis blanditiis omnis est alias ratione cumque corrupti, quibusdam magni debitis doloribus. Quibusdam quae minus sequi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Id accusamus vel ipsum dolor labore beatae similique maiores quos tempore ratione.</p>
+       <p class="fs-20 fs-sm-12 text-light text-center" >Naimov Davlatshoh</p>
+       <button class="btn btn-red w-25 w-sm-100 mx-auto">Add your application</button>
+     </div>
+   </div>
+ </div>
+ 
+</div>
+
+
+
+
+
+<div class="container">
+ <p class="fs-35 fs-sm-18 text-light"><span class="text-red">Furniture</span> to order in Tashkent</p>
+ <p class="fs-16 fs-sm-10 text-light">Each of us knows that a beautiful, cozy and modern interior is mainly created by furniture. Today, the market for the sale of furniture products in Uzbekistan offers buyers all kinds of options for office and residential furniture, which differ in price, materials, dimensions and equipment. When we think about buying new furniture, whether for the office or home, the first thing that comes to our mind is to find out how much furniture costs in Tashkent and go to stores and salons in search of a suitable option.</p>
+ <p class="fs-16 fs-sm-10 text-light">Intending to buy furniture in Tashkent, we clearly know what we want to buy - we “keep” in our head a picture of the color scheme and style of the interior, as we want to choose it to our taste. We carefully look through the photos on the Internet and look for a good store where you can find a similar and exactly the same option. At the same time, we strive to purchase furniture inexpensively, at the lowest price, since this large purchase, made profitably, will significantly save the family budget.</p>
+ <p class="fs-16 fs-sm-10 text-light">To date, the choice of selling finished furniture in Tashkent is so wide that it is sometimes difficult to stop at the optimal and at the same time inexpensive option. In this article, we will tell you how to buy furniture in Tashkent without wasting time and extra money, and as a result, be satisfied with the purchase.</p>
+ <p class="fs-35 fs-sm-18 text-light"><span class="text-red">Furniture</span> in Tashkent to order: advantages and popularity among consumers</p>
+ <ul class="px-4">
+   <li style="list-style-type: disc;" class="fs-16 fs-sm-10 text-light">First of all, the purchase of furniture to order is the creation of an exclusive, original interior that will delight the eye every day and delight your guests. They will definitely ask where you purchased such furniture and in which of the stores in Tashkent you can buy it. You can proudly answer that first-class professional craftsmen made it according to your personal order.</li>
+   <li style="list-style-type: disc;" class="fs-16 fs-sm-10 text-light">Custom-made kitchens are especially popular in Tashkent. Rational use of space and maximum functionality is the fundamental difference between a custom-made kitchen and a typical kitchen set or table. The same can be said about furniture for the hallway, children's and bedroom sets, as well as a soft corner in the living room.</li>
+   <li style="list-style-type: disc;" class="fs-16 fs-sm-10 text-light">The firm for the manufacture and sale of furniture in Tashkent does not cooperate with intermediaries and has its own production, which is the reason for the policy of relatively low prices. You will find that relatively cheap furniture does not mean work done somehow or poor quality materials. Furniture to order from the manufacturer is a great opportunity to save money.</li>
+ </ul>
+ <p class="fs-35 fs-sm-18 text-light">Order and buy furniture in Tashkent from the company <span class="text-red">"S Mebel"</span></p>
+ <p class="fs-16 fs-sm-10 text-light">We bring to your attention a general catalog of furniture products in Tashkent from the company "S Mebel" - a recognized domestic manufacturer of furniture for office and home. The main activity of the company "S Mebel" is the manufacture of custom-made furniture at relatively low prices, affordable for most buyers in Tashkent.</p>
+ <p class="fs-16 fs-sm-10 text-light">The furniture manufacturer "S Mebel" has gained recognition in Tashkent due to the high professionalism of the employees, the promptness of ordering furniture of any complexity (terms - from 1 week), reasonable prices and a high level of service. In this catalog you can choose a ready-made inexpensive option or order furniture according to your project - according to individual sizes and your sketches.</p>
+ <p class="fs-16 fs-sm-10 text-light">Experienced employees of the company "S Mebel" will help you decide on the design of furniture and take into account all your wishes, not missing a single detail. Here you can also read reviews from those who have already used the services of the manufacturer.  </p>
+ <p class="fs-16 fs-sm-10 text-light">Professionals of the Tashkent furniture factory "S Mebel" guarantee the strength, convenience and functionality of custom-made furniture. In addition to professional furniture manufacturing in Tashkent, the company provides the customer with a number of services, such as measurement, delivery and installation. And all this in general - at an affordable cost.</p>
+ <p class="fs-16 fs-sm-10 text-light">Since before concluding an agreement with the customer, all the details are discussed in the most detailed way, from design and color shades to design features, you can be sure that you will be satisfied with the result.</p>
+
+</div>
+
+
+
+
+<script>
+  document.addEventListener( 'DOMContentLoaded', function () {
+
+       var header = new Splide( '#image-slider1', {
+          perPage : 3,
+          breakpoints: {
+            640: {
+              perPage: 1,
+            },
+          },
+          classes: {
+            // Add classes for arrows.
+            // arrows: 'splide__arrows your-class-arrows',
+            // arrow : 'splide__arrow your-class-arrow',
+            prev  : 'splide__arrow--prev sl1-class-prev',
+            next  : 'splide__arrow--next sl1-class-next',
+
+ 
+          },
+       } );
+       header.mount()
+
+       
+
+    } );
+</script>
+
+
+<script>
+  document.addEventListener( 'DOMContentLoaded', function () {
+
+       var header = new Splide( '#image-slider2', {
+          perPage : 1,
+          
+          classes: {
+            // Add classes for arrows.
+            // arrows: 'splide__arrows your-class-arrows',
+            // arrow : 'splide__arrow your-class-arrow',
+            prev  : 'splide__arrow--prev sl2-class-prev',
+            next  : 'splide__arrow--next sl2-class-next',
+
+ 
+          },
+       } );
+       header.mount()
+
+       
+
+    } );
+</script>
+
+
+
+
+{% endblock %}
